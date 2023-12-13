@@ -15,15 +15,30 @@ public class GameOperationCLI {
     }
     private void run(){
         System.out.println(WELCOME);
-        try{
-            getUserChoice(MAX_BANK_ROLL, INITIALIZE_BANKROLL);
 
-        }catch (ZeroInputException e){
-            System.out.println("Thanks for playing!");
-        }
+            int bankroll = getUserChoice(MAX_BANK_ROLL, INITIALIZE_BANKROLL);
+            CrapsTable table = new CrapsTable(bankroll);
+
+            while (true){
+                //prepare for comeout roll (puck off)
+                table.prepareForRoll();
+
+                //initiate comeout roll and handle come out rolls results
+                table.nextRoll(0);
+
+                while (table.getPoint() != 0){
+                    //prepare for non-comeout roll (puck on)
+                    table.prepareForRoll();
+
+                    //handle all rolls that have a point
+                    table.nextRoll(0);
+
+                }
+            }
+
     }
 
-    public static int getUserChoice(int upperLimit, String prompt) throws ZeroInputException{
+    public static int getUserChoice(int upperLimit, String prompt){
 
         while(true){
             Scanner userInput = new Scanner(System.in);
@@ -37,7 +52,9 @@ public class GameOperationCLI {
                     throw new ExceedsMaxException("Invalid Input --- Input integer is too large\nThe maximum acceptable amount is " + upperLimit);
                 }
                 if (choice == 0){
-                    throw new ZeroInputException("User input is zero");
+                    System.out.println("Thanks for playing!");
+                    System.exit(0);
+                    //throw new ZeroInputException("User input is zero");
                 }
                 return choice;
             } catch (InputMismatchException e){
