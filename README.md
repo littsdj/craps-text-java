@@ -7,3 +7,5 @@ Other cool additions that I want to implement would be a default betting system,
 I spent 5 years working in the casino industry, specifically dealing in table games. Craps was always my favorite game to deal, and was the reason I was interested in the industry. I have always been fascinated by the simplicity of the statistics of a pair of dice. 36 combinations. Nice and simple. 
 
 As I no longer work in the casino industry, working on this app makes me remember some of the fun memories I have of dealing craps in my past!
+
+A quick demo of this project can be seen at https://youtu.be/OWHx-tUengE
