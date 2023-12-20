@@ -172,26 +172,29 @@ public class CrapsTable {
             }
             int betAmountNumber = GameOperationCLI.getUserChoice(playerBankroll, "How Much?");
             playerBankroll -= betAmountNumber;
+            int decisionValue = 0;
             switch (betChoiceNumber){
                 case 1:
-                    playerBets.add( new PlaceBet(4, betAmountNumber));
+                    decisionValue = 4;
                     break;
                 case 2:
-                    playerBets.add( new PlaceBet(5, betAmountNumber));
+                    decisionValue = 5;
                     break;
                 case 3:
-                    playerBets.add( new PlaceBet(6, betAmountNumber));
+                    decisionValue = 6;
                     break;
                 case 4:
-                    playerBets.add( new PlaceBet(8, betAmountNumber));
+                    decisionValue = 8;
                     break;
                 case 5:
-                    playerBets.add( new PlaceBet(9, betAmountNumber));
+                    decisionValue = 9;
                     break;
                 case 6:
-                    playerBets.add( new PlaceBet(10, betAmountNumber));
+                    decisionValue = 10;
                     break;
             }
+            Bet createdBet = new PlaceBet(decisionValue, betAmountNumber);
+            addToPlayerBets(createdBet);
 
         }
 
